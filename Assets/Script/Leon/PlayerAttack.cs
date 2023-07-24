@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
     private float nextFireTime; // Tiempo para el siguiente disparo
     private Animator animator; // Referencia al componente Animator
     private SpriteRenderer spriteRenderer; // Referencia al componente SpriteRenderer
+    private PlayerMovement playerMovement; // Referencia al componente PlayerMovement
+    private bool isAttacking; // Variable para controlar si el personaje está atacando
 
     public Transform leftFirePoint; // Punto desde el cual se disparará el proyectil hacia la izquierda
 
@@ -17,13 +19,15 @@ public class PlayerAttack : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerMovement = GetComponent<PlayerMovement>();
+        isAttacking = false; // Inicialmente, el personaje no está atacando
     }
 
     void Update()
     {
         // Comprobar si el personaje puede atacar (solo si está en estado "Idle")
         bool isIdle = !animator.GetBool("isWalking");
-        bool canAttack = isIdle && !animator.GetBool("isAttacking");
+        bool canAttack = isIdle && !isAttacking;
 
         if (canAttack && Time.time >= nextFireTime)
         {
@@ -48,6 +52,18 @@ public class PlayerAttack : MonoBehaviour
 
                 // Iniciar la animación de ataque
                 animator.SetBool("isAttacking", true);
+                isAttacking = true; // El personaje está atacando
+                
+
+                // Reproducir el sonido de disparo
+                // (Asegúrate de tener un AudioSource en el objeto del jugador y asignar el sonido de disparo en el Inspector)
+                if (GetComponent<AudioSource>() != null)
+                {
+                    GetComponent<AudioSource>().Play();
+                }
+
+                // Detener el movimiento del personaje mientras dispara
+                playerMovement.enabled = false;
 
                 // Detener la animación de ataque después de un breve período (ajustar según la duración de la animación)
                 StartCoroutine(StopAttackingAnimation());
@@ -59,6 +75,10 @@ public class PlayerAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f); // Ajusta el tiempo según la duración de la animación de ataque
         animator.SetBool("isAttacking", false);
+        isAttacking = false; // El personaje ya no está atacando
+
+        // Permitir que el personaje vuelva a moverse después de terminar la animación de ataque
+        playerMovement.enabled = true;
     }
 }
 
