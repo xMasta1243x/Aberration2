@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Menudepausa : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    public string pauseButton = "Joystick Button 7"; // Configurando el botón de pausa como "Joystick Button 7".
+    public string pauseButton = "Joystick Button 7"; // Configurando el botï¿½n de pausa como "Joystick Button 7".
 
     private bool isPaused = false;
 
@@ -18,8 +18,8 @@ public class Menudepausa : MonoBehaviour
 
     void Update()
     {
-        // Verificar si el botón configurado para pausar (en este caso, "Joystick Button 7" o "Escape") ha sido presionado.
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown(pauseButton))
+        // Verificar si el botï¿½n configurado para pausar (en este caso, "Joystick Button 7" o "Escape") ha sido presionado.
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Cancel"))
         {
             if (!isPaused)
             {
@@ -57,20 +57,20 @@ public class Menudepausa : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        // Cambiar a la escena del menú principal. Asegúrate de tener la escena correcta en el índice 0.
+        // Cambiar a la escena del menï¿½ principal. Asegï¿½rate de tener la escena correcta en el ï¿½ndice 0.
         SceneManager.LoadScene(0);
     }
 
     public void GoToOptions()
     {
-        // Agrega aquí la lógica para abrir la escena de opciones.
+        // Agrega aquï¿½ la lï¿½gica para abrir la escena de opciones.
         // Por ejemplo, puedes cargar una escena de opciones o mostrar/ocultar un canvas de opciones en la escena actual.
     }
 
     public void HealPlayer()
     {
-        // Agrega aquí la lógica para curar al jugador.
-        // Por ejemplo, puedes restaurar su salud o aplicar cualquier efecto de curación.
+        // Agrega aquï¿½ la lï¿½gica para curar al jugador.
+        // Por ejemplo, puedes restaurar su salud o aplicar cualquier efecto de curaciï¿½n.
     }
 }
 
