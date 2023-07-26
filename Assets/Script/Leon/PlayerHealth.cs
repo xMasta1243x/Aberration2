@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -50,6 +51,20 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        gameObject.SetActive(false);
+    // Puedes colocar aquí cualquier lógica adicional antes de reiniciar la escena (por ejemplo, una animación de muerte).
+
+    // Obtener el nombre de la escena actual
+    string currentSceneName = SceneManager.GetActiveScene().name;
+
+    // Reiniciar la escena actual
+    SceneManager.LoadScene(currentSceneName);
     }
+
+    public void Heal(float healAmount)
+    {
+        hpActual += healAmount;
+        hpActual = Mathf.Min(hpActual, hpMaxima);
+        UpdateHealthBar();
+    }
+
 }

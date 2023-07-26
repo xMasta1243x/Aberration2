@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class NurseHealth : MonoBehaviour
 {
     public int maxHealth = 3; // Vida máxima del enemigo
     private int currentHealth; // Vida actual del enemigo
@@ -11,7 +11,6 @@ public class EnemyHealth : MonoBehaviour
     public GameObject medikitPrefab; // Prefab del Medikit a soltar
     public float medikitDropProbability = 0.4f; // Probabilidad de soltar el Medikit (40%)
 
-    public GameObject deathEffect; // GameObject a activar cuando el enemigo muera
 
     public AudioClip hitSound; // Sonido cuando el enemigo es atacado
     public AudioClip deathSound; // Sonido cuando el enemigo muere
@@ -57,29 +56,13 @@ public class EnemyHealth : MonoBehaviour
         animator.SetBool("isDead", true);
         isDead = true;
 
-        // Verificar si se debe soltar el Medikit
-        if (medikitPrefab != null && Random.value <= medikitDropProbability)
-        {
-            // Instanciar el Medikit en la posición del enemigo
-            Instantiate(medikitPrefab, transform.position, Quaternion.identity);
-        }
-
-         if (deathEffect != null)
-        {
-        deathEffect.SetActive(true);
-        }
-
-        // Reproducir el sonido de muerte
-        if (audioSource && deathSound)
-        {
-            audioSource.PlayOneShot(deathSound);
-        }
-
         // Desactivar el collider para evitar interacciones mientras la animación se reproduce
         GetComponent<Collider2D>().enabled = false;
 
         // Aquí puedes agregar cualquier otro comportamiento que quieras para cuando el enemigo muera
         // Por ejemplo, detener el movimiento, desactivar la IA, etc.
+
+        // Importante: Ya no destruimos el objeto aquí, ya que eso lo manejará el Animator
     }
 
     // Propiedad para obtener el estado de isDead
@@ -111,10 +94,4 @@ public class EnemyHealth : MonoBehaviour
         isHit = false;
         animator.SetBool("isHit", false);
     }
-
-    public int GetCurrentHealth()
-    {
-        return currentHealth;
-    }
 }
-
