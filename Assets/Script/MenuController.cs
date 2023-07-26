@@ -4,13 +4,20 @@ using UnityEngine.Audio;
 
 public class MenuController : MonoBehaviour
 {
+    public GameObject optionsCanvas; // Referencia al objeto del canvas "Menu de opciones"
+    public GameObject levelsCanvas;  // Referencia al objeto del canvas "Menu de niveles"
+
+    private void Start()
+    {
+        // Asegurarse de que el canvas de niveles esté desactivado al inicio
+        levelsCanvas.SetActive(false);
+    }
+
     public void PlayGame()
     {
         // Cargar la escena del juego principal
         SceneManager.LoadScene("GameScene");
     }
-
-    public GameObject optionsCanvas; // Referencia al objeto del canvas "Menu de opciones"
 
     public void OpenSettings()
     {
@@ -40,4 +47,17 @@ public class MenuController : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void ShowLevelsCanvas()
+    {
+        levelsCanvas.SetActive(true);
+    }
+
+    // Agregar este método para ocultar el canvas de niveles
+    public void HideLevelsCanvas()
+    {
+        levelsCanvas.SetActive(false);
+    }
+
+    
 }
