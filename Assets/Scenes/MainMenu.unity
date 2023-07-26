@@ -1114,7 +1114,7 @@ AudioSource:
   m_GameObject: {fileID: 300980975}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: c56db88fb024b43419ec688f04a2115c, type: 2}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6268bfdf0fe0237439c91d8f422a87e6, type: 2}
   m_audioClip: {fileID: 8300000, guid: aabccc6b40c2ca04c96359fba3e3f03d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -4628,7 +4628,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1080374465}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: CambiarVolumen
         m_Mode: 0
