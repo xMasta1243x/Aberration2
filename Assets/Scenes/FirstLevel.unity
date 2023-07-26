@@ -410,7 +410,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5487335419073750109, guid: fa3a4c00a64178f4ca2eba5133d17f1a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5487335419351416611, guid: fa3a4c00a64178f4ca2eba5133d17f1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -564,7 +564,7 @@ AudioSource:
   m_GameObject: {fileID: 328038566}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6268bfdf0fe0237439c91d8f422a87e6, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3e6d921b2e6f4d04682c99288c4d8e68, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.902
